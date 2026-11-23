@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap">
   <style>
-    :root{--dark:#20201f;--ink:#292827;--muted:#5c5852;--paper:#f6f5f2;--line:#e6e1d8;--gold:#e8d3a2;--gold-dark:#79531f;--gradient:linear-gradient(115deg,#e8d3a2,#c9a063 62%,#b8863b);--nav:74px;--hero-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=82')}
+    :root{--dark:#20201f;--ink:#292827;--muted:#5c5852;--paper:#f6f5f2;--line:#e6e1d8;--gold:#c3ae86;--gold-dark:#735b37;--accent:#bfa77c;--nav:74px}
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 14px)}
     body{margin:0;background:white;color:var(--ink);font:500 1rem/1.85 Cairo,Arial,sans-serif}
@@ -27,7 +27,7 @@
     h1,h2,h3,p,figure{margin:0} h1,h2,h3{line-height:1.25;font-weight:800}
     a{color:inherit;text-decoration:none} button,input,textarea{font:inherit} button{cursor:pointer;color:inherit}
     img{display:block;max-width:100%} [hidden]{display:none!important}
-    :focus-visible{outline:3px solid #b88135;outline-offset:4px}
+    :focus-visible{outline:3px solid #a58a63;outline-offset:4px}
     .wrap{width:min(100% - 2rem,1200px);margin-inline:auto}
     .icon{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:middle}
     .skip{position:fixed;inset-block-start:8px;inset-inline-start:8px;transform:translateY(-150%);background:white;color:var(--ink);padding:.55rem 1rem;z-index:20}.skip:focus{transform:none}
@@ -35,24 +35,33 @@
     .header.solid,.header.open{background:var(--dark)}
     .nav{min-height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:1rem}
     .brand{display:inline-flex;align-items:center;gap:.7rem;font-weight:800;line-height:1.2}
-    /* Show the original white-on-charcoal emblem from the lower-right of the brand sheet. */
-    .mark{position:relative;display:block;flex:none;width:58px;aspect-ratio:1.2;overflow:hidden;border:1px solid #e8d3a25c;border-radius:3px;background:#3c3c3c;direction:ltr}
-    .mark img{position:absolute;max-width:none;width:295%;height:auto;left:-170%;top:-212%}
-    .hero-mark{width:clamp(92px,11vw,122px);margin-block-end:1.25rem;border-color:#e8d3a294;box-shadow:0 3px 18px #15141255}
+    /* Crop the original artwork and convert its charcoal backing to transparency. */
+    .mark{position:relative;display:block;flex:none;width:58px;aspect-ratio:1.36;overflow:hidden;direction:ltr}
+    .mark img{position:absolute;max-width:none;width:308%;height:auto;left:-179%;top:-258%;filter:url(#logo-transparency)}
+    .hero-mark{width:clamp(106px,11vw,152px);margin:0 auto 1.1rem;filter:drop-shadow(0 3px 14px #0007)}
     .navlinks{display:none;position:absolute;inset:100% 0 auto;background:var(--dark);padding:.6rem 1rem 1.1rem;border-bottom:1px solid #ffffff25}
     .header.open .navlinks{display:grid}.navlinks a{display:block;padding:.65rem;font-weight:700;font-size:.9rem}.navlinks a:hover,.footer a:hover{color:var(--gold)}
     .nav-actions{display:flex;gap:.55rem}.control{background:transparent;color:inherit;border:1px solid #ffffff55;border-radius:3px;min-width:44px;min-height:44px;padding:.2rem .65rem;font-size:.82rem;font-weight:800}
     .language{direction:ltr}.language span[aria-current]{color:var(--gold)}
     .hero{position:relative;min-height:100vh;min-height:100svh;display:grid;align-items:center;background:#252524;color:white;isolation:isolate;padding:calc(var(--nav) + 3.2rem) 0 5rem;overflow:hidden}
-    /* Move the photo on its own layer so the text and dark overlay stay still. */
-    .hero-photo{position:absolute;inset:-7%;z-index:-2;pointer-events:none;background:var(--hero-image) center 52%/cover no-repeat;animation:hero-camera 11s cubic-bezier(.45,.05,.55,.95) infinite alternate}
-    .hero[data-motion-paused] .hero-photo{animation-play-state:paused}
-    .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to left,#191918e6 0%,#20201eb8 43%,#22221f48 100%),linear-gradient(0deg,#191918bd,transparent 58%)}
-    html[dir=ltr] .hero::before{background:linear-gradient(to right,#191918e6 0%,#20201eb8 43%,#22221f48 100%),linear-gradient(0deg,#191918bd,transparent 58%)}
-    .motion-toggle{position:absolute;inset-block-end:1rem;inset-inline-start:max(1rem,calc((100% - 1200px)/2));display:grid;place-items:center;width:44px;padding:0;background:#20201fc9}
-    .motion-toggle .play,.hero[data-motion-paused] .motion-toggle .pause{display:none}
-    .hero[data-motion-paused] .motion-toggle .play{display:block}
-    .hero-inner{position:relative}.hero-copy{max-width:700px}
+    .hero-scene{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block;pointer-events:none}
+    .hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,#23262a50 0%,#16181bbd 90%),linear-gradient(0deg,#111216d1 0%,#171a1d55 80%);opacity:1;transition:opacity .7s}
+    .hero.fly-playing::before{opacity:.3}
+    .hero-inner{position:relative;text-align:center}
+    .hero-copy{max-width:790px;margin-inline:auto}
+    .hero-copy .actions{justify-content:center}
+    .hero.fly-playing .hero-copy,.hero.fly-loading .hero-copy{visibility:hidden}
+    .hero.fly-playing .hero-copy > *,.hero.fly-loading .hero-copy > *{animation:none}
+    .office-sign{position:absolute;z-index:1;pointer-events:none;transform:translate(-50%,-50%);filter:drop-shadow(0 0 6px #e8d5b858) drop-shadow(1px 2px 1px #191714)}
+    .office-sign img{filter:url(#logo-transparency) brightness(.9)}
+    .hero.office-visible::before{background:linear-gradient(0deg,#111216ef 0%,#11121686 24%,#11121613 63%,#11121660 100%)}
+    .hero.office-visible{padding-block-end:clamp(1.75rem,5vh,3rem)}
+    .hero.office-visible .hero-inner{align-self:end;z-index:1}
+    .hero.office-visible .hero-mark,.hero.office-visible .hero-note{display:none}
+    .hero.office-visible h1{font-size:clamp(1.75rem,3.6vw,3.15rem)}
+    html[lang=en] .hero.office-visible h1{font-size:clamp(1.75rem,3.6vw,3.15rem)}
+    .hero.office-visible .hero-tag{margin-bottom:1rem;font-size:clamp(.98rem,1.8vw,1.25rem)}
+    .hero.office-visible .hero-copy > .actions{animation-delay:.45s}
     /* The entrance plays once. Each line arrives in reading order. */
     .hero-copy > *{animation:enter .72s cubic-bezier(.2,.75,.25,1) both}
     .hero-copy > :nth-child(2){animation-delay:.08s}
@@ -62,19 +71,16 @@
     .hero-copy > :nth-child(6){animation-delay:.39s}
     .hero h1{font-size:clamp(2.65rem,7.3vw,6.15rem);line-height:1.12;margin:.55rem 0 .6rem}
     html[lang=en] .hero h1{font-size:clamp(2.55rem,6.6vw,5.6rem);letter-spacing:-.065em}
-    .hero-tag{font-size:clamp(1.12rem,2.6vw,1.8rem);color:#f0deba;font-weight:700;line-height:1.45}
-    .hero-note{max-width:49ch;color:#eee9e0;margin-block:1.1rem 1.8rem}
-    .location-label{display:inline-flex;align-items:center;gap:.45rem;color:var(--gold);font-weight:700;font-size:.9rem}
-    .location-label::before{content:"";width:29px;height:1px;background:var(--gradient);margin-inline-end:.15rem}
+    .hero-tag{font-size:clamp(1.12rem,2.6vw,1.8rem);color:#e2dad0;font-weight:700;line-height:1.45}
+    .hero-note{max-width:49ch;color:#eee9e0;margin:1.1rem auto 1.8rem}
+    .location-label{display:flex;width:max-content;max-width:100%;margin-inline:auto;align-items:center;justify-content:center;gap:.65rem;color:var(--gold);font-weight:700;font-size:.9rem}
+    .location-label::before,.location-label::after{content:"";width:24px;height:1px;background:var(--accent);flex:none}
     .actions{display:flex;flex-wrap:wrap;gap:.65rem}
     .btn{display:inline-flex;justify-content:center;align-items:center;gap:.55rem;min-height:48px;padding:.62rem 1.1rem;border:1px solid transparent;border-radius:3px;font-size:.91rem;font-weight:800;transition:transform .2s,background-color .2s}
-    .btn:hover{transform:translateY(-2px)}.btn.gold{background:var(--gradient);color:#211b12}.btn.outline{border-color:#ffffff8a;color:white;background:#1b1b1b40}.btn.outline:hover{background:#1b1b1b9e}
-    .hero-frame{display:none;pointer-events:none;position:absolute;inset-block:0;inset-inline-end:1.25rem;width:26%;border:1px solid #e8d3a278;border-inline-start:0;animation:draw-frame 1.25s .12s cubic-bezier(.2,.75,.25,1) both}
-    .hero-frame::after{content:"";position:absolute;inset:13px -12px -13px 12px;border:1px solid #e8d3a249}
-    .hero-frame::before{content:"";position:absolute;inset:-1px -1px auto;width:46%;height:2px;background:var(--gradient);box-shadow:0 0 14px #e8d3a288;animation:frame-accent 1.15s .25s ease-out both}
+    .btn:hover{transform:translateY(-2px)}.btn.gold{background:var(--accent);color:#211b12}.btn.gold:hover{background:#cbb78e}.btn.outline{border-color:#ffffff8a;color:white;background:#1b1b1b40}.btn.outline:hover{background:#1b1b1b9e}
     .section{padding-block:clamp(3.5rem,8vw,7rem)}.tinted{background:var(--paper)}
     .section h2{font-size:clamp(1.9rem,4.8vw,3.15rem);margin-bottom:.85rem;letter-spacing:-.025em}
-    .section h2::before{content:"";display:block;width:53px;height:3px;background:var(--gradient);margin-bottom:1rem}
+    .section h2::before{content:"";display:block;width:53px;height:3px;background:var(--accent);margin-bottom:1rem}
     .intro{max-width:68ch;color:var(--muted)}.section-head{margin-bottom:1.9rem}
     .about-grid,.contact-grid{display:grid;gap:2rem}
     .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);background:var(--line);gap:1px}
@@ -109,20 +115,25 @@
     .reveal.arrived :is(.service,.project):nth-child(6){--card-delay:325ms}
     .reveal:focus-within,.reveal:focus-within :is(.service,.reason,.project){opacity:1;transform:none;animation:none;transition:none}
     @keyframes enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes hero-camera{from{transform:translate3d(-3%,2%,0) scale(1.01)}to{transform:translate3d(4%,-3%,0) scale(1.22)}}
-    @keyframes draw-frame{from{opacity:0;clip-path:inset(0 -16px 100%)}to{opacity:1;clip-path:inset(0 -16px -16px)}}
-    @keyframes frame-accent{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
     @media(max-width:420px){.stat{padding:.7rem .5rem}.stat span{font-size:.8rem}}
     @media(min-width:570px){.wrap{width:min(100% - 3rem,1200px)}.services,.gallery,.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-grid{grid-template-columns:1.2fr 1fr 1fr}}
-    @media(min-width:800px){.about-grid,.contact-grid{grid-template-columns:1fr 1fr;align-items:start;gap:clamp(2rem,6vw,5rem)}.why-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.4rem}.gallery,.services{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-frame{display:block}.hero-copy{width:72%}.footer ul{grid-auto-flow:row}}
+    @media(min-width:800px){.about-grid,.contact-grid{grid-template-columns:1fr 1fr;align-items:start;gap:clamp(2rem,6vw,5rem)}.why-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.4rem}.gallery,.services{grid-template-columns:repeat(3,minmax(0,1fr))}.footer ul{grid-auto-flow:row}}
     @media(min-width:1040px){:root{--nav:82px}.navlinks,.header.open .navlinks{position:static;display:flex;align-items:center;gap:.32rem;padding:0;background:none;border:0}.menu-button{display:none}.navlinks a{white-space:nowrap}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.pending{opacity:1;transform:none}.motion-toggle{display:none}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.pending{opacity:1;transform:none}.hero.fly-playing .hero-copy,.hero.fly-loading .hero-copy{visibility:visible}}
   </style>
 </head>
 <body>
   <a class="skip" href="#main" data-ar="انتقل إلى المحتوى" data-en="Skip to content">انتقل إلى المحتوى</a>
   <!-- Reusable inline icons keep the page independent of icon libraries. -->
   <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="logo-transparency" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0 0 0 0 1
+                                            0 0 0 0 1
+                                            0 0 0 0 1
+                                            .426 .838 .163 0 -.427"/>
+      </filter>
+    </defs>
     <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5v18m0-12h7v12M8 10v1m0 3v1m0 3v1m8-6v1m0 3v1"/></symbol>
     <symbol id="i-crane" viewBox="0 0 24 24"><path d="M3 21h10M7 21V3m-4 4h18L7 3 3 7zm14 0v7a2 2 0 1 0 4 0M7 11l4 3-4 3"/></symbol>
     <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l5-5 4 2 5-7m-5 0h5v5"/></symbol>
@@ -139,8 +150,6 @@
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
     <symbol id="i-up" viewBox="0 0 24 24"><path d="m5 14 7-7 7 7"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14m6-14v14"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 12 7-12 7z"/></symbol>
   </svg>
 
   <header class="header" id="header">
@@ -163,9 +172,9 @@
 
   <main id="main">
     <section id="home" class="hero" aria-labelledby="hero-title">
-      <div class="hero-photo" aria-hidden="true"></div>
+      <canvas class="hero-scene" id="hero-scene" aria-hidden="true" hidden></canvas>
+      <span class="mark office-sign" id="office-sign" aria-hidden="true" hidden><img src="./شعار.jpeg" alt=""></span>
       <div class="wrap hero-inner">
-        <div class="hero-frame" aria-hidden="true"></div>
         <div class="hero-copy">
           <span class="mark hero-mark"><img src="./شعار.jpeg" alt=""></span>
           <p class="location-label" data-ar="مصراتة، ليبيا" data-en="Misurata, Libya">مصراتة، ليبيا</p>
@@ -178,10 +187,6 @@
           </div>
         </div>
       </div>
-      <button id="hero-motion" type="button" class="control motion-toggle" aria-pressed="false" aria-label="إيقاف حركة صورة الواجهة مؤقتاً" data-aria-ar="إيقاف حركة صورة الواجهة مؤقتاً" data-aria-en="Pause background motion">
-        <svg class="icon pause" aria-hidden="true"><use href="#i-pause"/></svg>
-        <svg class="icon play" aria-hidden="true"><use href="#i-play"/></svg>
-      </button>
     </section>
 
     <!-- Edit static copy in paired data-ar / data-en attributes and in the Arabic fallback text. -->
@@ -269,7 +274,7 @@
     const photo = id => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=76`;
     // Replace photo(...) with a relative path such as './images/project-1.webp'.
     const projects = [
-      [photo('photo-1486406146926-c627a92ad1ab'), 'واجهات تجارية', 'Commercial façades', 'أبراج زجاجية من زاوية منخفضة', 'Glass office towers viewed from below'],
+      [photo('photo-1511818966892-d7d671e672a2'), 'واجهات معمارية', 'Architectural façades', 'واجهة معمارية معاصرة', 'Contemporary architectural façade'],
       [photo('photo-1600596542815-ffad4c1539a9'), 'عمارة سكنية', 'Residential architecture', 'منزل حديث بواجهة متعددة المستويات', 'Modern home with a layered façade'],
       [photo('photo-1503387762-592deb58ef4e'), 'التخطيط الهندسي', 'Engineering planning', 'مخططات وأدوات هندسية', 'Architectural drawings and drafting tools'],
       [photo('photo-1600210492486-724fe5c67fb0'), 'التشطيبات الداخلية', 'Interior finishing', 'مساحة معيشة بتشطيبات داخلية هادئة', 'Living space with neutral interior finishes'],
@@ -399,10 +404,6 @@
       try { localStorage.setItem('almiemar-language', language); } catch { /* Private browsing may disable storage. */ }
     });
 
-    $('hero-motion').addEventListener('click', event => {
-      const paused = $('home').toggleAttribute('data-motion-paused');
-      event.currentTarget.setAttribute('aria-pressed', String(paused));
-    });
 
     function setMenu(open) {
       $('header').classList.toggle('open', open);
@@ -490,6 +491,506 @@
       }, { threshold: 0.25 });
       counters.observe($('stats'));
     }
+  </script>
+  <script>
+    /* The opening is an original, illustrative 3D building. Edit these camera
+       paths to change the flight. Coordinates are [horizontal, height, depth]. */
+    (() => {
+      const hero = document.getElementById('home');
+      const canvas = document.getElementById('hero-scene');
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+      const duration = 11700;
+      const hold = 1450;
+      const positions = [
+        [20,8.6,9],[16,6.7,19],[7.8,4.4,23],[1.2,2.9,17],[.15,2.25,9.7],
+        [0,1.95,6.25],[0,1.9,4.4],[0,1.88,2.1],[0,2.27,.75],[0,2.91,-.57],
+        [0,3.05,-2.05],[.34,3.12,-3.68],[.29,3.2,-4.37],[0,3.24,-4.79]
+      ];
+      const targets = [
+        [0,6.4,0],[0,5.8,1],[0,4.4,2.3],[0,3.2,3.6],[0,2.55,3.7],
+        [0,2.25,3.65],[0,2.05,2.5],[0,1.85,.5],[0,2.50,-1.2],[0,2.73,-3.75],
+        [.3,2.7,-5.2],[.15,2.83,-7.25],[0,3.02,-8.8],[0,3.13,-9.1]
+      ];
+      let scene;
+      let frame;
+      let playing = false;
+      let timeout;
+
+      function finish(drawEnd = true) {
+        playing = false;
+        cancelAnimationFrame(frame);
+        clearTimeout(timeout);
+        hero.classList.remove('fly-loading', 'fly-playing');
+        if (drawEnd && scene && !canvas.hidden) scene.draw(1);
+      }
+
+      function play() {
+        if (!scene || reduce.matches || playing) return;
+        clearTimeout(timeout);
+        playing = true;
+        hero.classList.remove('fly-loading');
+        hero.classList.add('fly-playing');
+        canvas.hidden = false;
+        const started = performance.now();
+        function tick(now) {
+          if (!playing) return;
+          const elapsed = now - started;
+          const time = Math.min(1, Math.max(0, elapsed / duration));
+          if (time < 1 || !scene.atOffice()) scene.draw(time);
+          if (elapsed < duration + hold) frame = requestAnimationFrame(tick);
+          else finish(false);
+        }
+        scene.draw(0);
+        frame = requestAnimationFrame(tick);
+      }
+
+      function createScene(T, context) {
+        const renderer = new T.WebGLRenderer({ canvas, context, antialias: true, alpha: false });
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+        renderer.toneMapping = T.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.12;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = T.PCFSoftShadowMap;
+        renderer.shadowMap.autoUpdate = false;
+        const world = new T.Scene();
+        world.background = new T.Color('#7e858e');
+        world.fog = new T.FogExp2('#80858c', .018);
+        const camera = new T.PerspectiveCamera(48, 1, .08, 180);
+        const home = new T.Group();
+        world.add(home);
+
+        const sky = new T.Mesh(new T.SphereGeometry(110, 24, 12), new T.ShaderMaterial({
+          side: T.BackSide,
+          depthWrite: false,
+          vertexShader: `varying vec3 direction;
+            void main(){direction=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+          fragmentShader: `varying vec3 direction;
+            void main(){
+              vec3 d=normalize(direction);
+              float h=max(d.y,0.0);
+              float light=max(dot(d,normalize(vec3(-0.62,0.21,-0.43))),0.0);
+              vec3 col=mix(vec3(.55,.56,.58),vec3(.25,.30,.36),smoothstep(0.0,.73,h));
+              col+=vec3(.10,.085,.075)*pow(light,14.0);
+              gl_FragColor=vec4(col,1.0);
+            }`
+        }));
+        sky.renderOrder = -10;
+        world.add(sky);
+
+        world.add(new T.HemisphereLight('#d5e0ec', '#777474', 1.9));
+        const key = new T.DirectionalLight('#f3ede4', 2.8);
+        key.position.set(-13, 18, 12);
+        key.castShadow = true;
+        Object.assign(key.shadow.camera, { left:-24, right:24, top:24, bottom:-24, near:1, far:65 });
+        key.shadow.mapSize.set(1024, 1024);
+        key.shadow.normalBias = .04;
+        world.add(key);
+        const lobby = new T.PointLight('#e6d8c5', 24, 15, 2);
+        lobby.position.set(0, 3.15, 3.55);
+        world.add(lobby);
+
+        const material = (color, roughness = .78, metalness = 0) => new T.MeshStandardMaterial({color, roughness, metalness});
+        function surfaceTexture(woodGrain) {
+          const tile = document.createElement('canvas');
+          tile.width = tile.height = 256;
+          const ctx = tile.getContext('2d');
+          const pixels = ctx.createImageData(tile.width, tile.height);
+          for (let y = 0; y < tile.height; y++) {
+            for (let x = 0; x < tile.width; x++) {
+              const fleck = ((x*251 + y*431 + x*y*31) % 23) - 11;
+              const band = Math.sin(x*.21 + Math.sin(y*.036+x*.08)*1.3);
+              const shade = woodGrain
+                ? 214 + fleck*.6 + band*14 + Math.sin(x*1.63+y*.022)*6
+                : 229 + fleck*1.35 + Math.sin(x*.073)*Math.sin(y*.059)*8;
+              const i = (y*tile.width+x)*4;
+              pixels.data[i] = pixels.data[i+1] = pixels.data[i+2] = shade;
+              pixels.data[i+3] = 255;
+            }
+          }
+          ctx.putImageData(pixels, 0, 0);
+          const texture = new T.CanvasTexture(tile);
+          texture.colorSpace = T.SRGBColorSpace;
+          texture.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
+          return texture;
+        }
+        const stone = material('#898883');
+        const warmStone = material('#a5a39c');
+        const trim = material('#2d3033', .72, .18);
+        const brass = material('#82735f', .86, .12);
+        const glass = material('#36454f', .38, .2);
+        const amberGlass = new T.MeshStandardMaterial({color:'#655f57',roughness:.56,metalness:.12,emissive:'#b7a48a',emissiveIntensity:.21});
+        const lamp = new T.MeshBasicMaterial({color:'#e9ddcb'});
+        const paving = material('#605650');
+        const road = material('#353438');
+        const grass = material('#464b32');
+        const trunk = material('#53443b');
+        const unit = new T.BoxGeometry();
+
+        function box(mat, w, h, d, x, y, z, cast = true, parent = home) {
+          const mesh = new T.Mesh(unit, mat);
+          mesh.position.set(x,y,z);
+          mesh.scale.set(w,h,d);
+          mesh.castShadow = cast;
+          mesh.receiveShadow = true;
+          parent.add(mesh);
+          return mesh;
+        }
+
+        box(road, 150, .32, 150, 0, -.22, 0, false);
+        box(paving, 22, .18, 24, 0, .015, 7, false);
+        for (let i = -5; i <= 5; i++) box(road, .026, .012, 23, i*1.85, .111, 7, false);
+        for (let i = 0; i < 12; i++) box(road, 22, .012, .026, 0, .111, -4+i*1.95, false);
+        box(stone, 16.8, .22, 11.2, 0, .16, 3, false);
+        box(trim, .25, 3.9, 7.2, -7.8, 2.28, 0);
+        box(trim, .25, 3.9, 7.2, 7.8, 2.28, 0);
+        box(trim, 15.9, 4.1, .24, 0, 2.45, -9.35);
+        box(warmStone, 16.4, .65, 7.65, 0, 4.48, .05);
+        box(stone, 13, 8.85, 6.7, -.7, 9.14, -.4);
+        box(warmStone, 13.25, .25, 6.95, -.7, 13.7, -.4);
+        box(trim, 8.3, .45, 5.4, -.85, 14.04, -.42);
+        box(warmStone, 2.1, 9.2, 6.95, 5.6, 9.16, -.45);
+
+        // Recessed window bays and exterior fins. Both visible elevations have depth.
+        for (let floor = 0; floor < 4; floor++) {
+          const y = 5.8 + floor * 2.1;
+          for (let bay = 0; bay < 7; bay++) {
+            const x = -6.3 + 1.69 * bay;
+            box(trim, 1.47, 1.79, .15, x,y,3.01,false);
+            box((bay + floor * 3) % 5 === 1 ? amberGlass : glass, 1.35, 1.64, .19, x,y,3.04,false);
+            box(brass, .037, 1.64, .05, x,y,3.153,false);
+          }
+          for (let bay = 0; bay < 4; bay++) {
+            const z = -3 + 1.53 * bay;
+            box(glass, .16, 1.59, 1.21, 6.69,y,z,false);
+            box(brass, .08, 1.61, .037, 6.77,y,z,false);
+          }
+          box(warmStone, 12.6, .18, .54, -.86,y+.96,3.18);
+        }
+        for (let bay = 0; bay < 8; bay++) {
+          box(warmStone, .13, 8.83, .6, -7.14 + bay * 1.69, 9.15, 3.3);
+        }
+        for (let bay = -5; bay <= 5; bay++) {
+          if (Math.abs(bay) <= 1) continue;
+          box(glass, 1.24, 3.29, .12, bay*1.35, 2.17, 3.67, false);
+          box(brass, .062, 3.34, .15, bay*1.35-.66, 2.17, 3.72, false);
+        }
+        for (const side of [-1,1]) {
+          box(amberGlass, .75, 3.29, .12, side*1.64, 2.17, 3.67, false);
+          box(brass, .085, 3.48, .17, side*1.27, 2.13, 3.73, false);
+        }
+        for (let bay = 0; bay < 5; bay++) box(glass, .13, 3.21, 1.12, 8.02, 2.15, -2.71+bay*1.36, false);
+        box(brass, 13.8, .068, .1, 0, 3.75, 3.77, false);
+        box(lamp, 4.22, .03, .025, 0, 3.9, 3.79, false);
+
+        const doorGlass = new T.MeshStandardMaterial({color:'#586973',roughness:.28,transparent:true,opacity:.57,depthWrite:false});
+        const doors = [-1,1].map(side => {
+          const hinge = new T.Group();
+          hinge.position.set(side*1.23, 0, 3.73);
+          home.add(hinge);
+          const center = -side*.604;
+          box(doorGlass, 1.17, 3.08, .055, center, 1.91, 0, false, hinge);
+          for (const x of [0, -side*1.205]) box(trim, .057, 3.15, .09, x, 1.91, 0, false, hinge);
+          for (const y of [.34, 3.48]) box(trim, 1.22, .07, .09, center, y, 0, false, hinge);
+          box(brass, .052, .59, .13, -side*1.05, 1.48, 0, false, hinge);
+          return hinge;
+        });
+
+        // Continuous interior: entrance landing, stair treads and raised office.
+        const timber = material('#675748', .78);
+        const wall = material('#a3a09a', .96);
+        timber.map = surfaceTexture(true);
+        wall.map = surfaceTexture(false);
+        wall.bumpMap = wall.map;
+        wall.bumpScale = .027;
+        const leather = material('#41484c');
+        box(paving, 15.4, .14, 7.08, 0, .27, 0, false);
+        for (const x of [-3.18,3.18]) {
+          box(wall, .19, 3.87, 6.95, x, 2.22, -.04);
+          box(timber, .045, 2.62, 2.3, x*.966, 1.63, 1.98, false);
+          box(lamp, .04, .05, 3, x*.956, 3.57, .7, false);
+        }
+        for (let step = 0; step < 7; step++) {
+          const rise = .17 * (step + 1);
+          const z = 1.28 - step*.32;
+          box(warmStone, 2.46, rise, .33, 0, .34+rise/2,z);
+          box(trim, 2.46, .024, .033, 0,.34+rise,z+.15,false);
+        }
+        for (const x of [-1.31,1.31]) {
+          const rail = box(brass,.055,.055,2.52,x,1.83,.27,false);
+          rail.rotation.x = .47;
+          for (const z of [-.76,.22,1.26]) box(trim,.045,1.06,.045,x,1.46+(1.26-z)*.47,z,false);
+        }
+        // A landing and glazed threshold separate the staircase from the reception.
+        box(timber,6.13,.20,8.48,0,1.43,-5.11);
+        box(wall,6.38,.2,8.3,0,4.37,-5.14);
+        for (const x of [-3.12,3.12]) {
+          box(wall,.18,2.8,8.42,x,2.92,-5.12);
+          box(trim,.055,.1,8.42,x*.963,1.58,-5.12,false);
+          box(trim,.09,2.66,.12,x*.53,2.85,-3.7);
+        }
+        box(trim,3.42,.12,.14,0,4.16,-3.7);
+        for (const x of [-2.37,2.37]) {
+          box(doorGlass,1.33,2.57,.045,x,2.85,-3.7,false);
+          box(trim,.045,2.62,.065,x,2.85,-3.69,false);
+        }
+        const carpet = material('#4f504d', 1);
+        const stonePanel = material('#62615d', .95);
+        const deskTop = material('#393633', .68);
+        const paper = material('#d3cec1');
+        const upholstery = material('#69655e', .94);
+        const piping = material('#55534e', .96);
+        box(carpet,4.78,.035,4.49,0,1.548,-6.94,false);
+        box(wall,6.18,2.82,.15,0,2.94,-9.27);
+        box(stonePanel,2.5,2.74,.09,0,2.92,-9.147);
+        for (let i = 0; i < 13; i++) {
+          const offset = 1.32 + i*.127;
+          for (const side of [-1,1]) box(timber,.065,2.69,.085,side*offset,2.91,-9.136);
+        }
+        // Desk slab, ribbed modesty panel, desk accessories and seating.
+        box(deskTop,2.7,.085,.91,0,2.32,-7.88);
+        box(timber,2.49,.675,.53,0,1.94,-7.91);
+        for (let i = -13; i <= 13; i++) box(timber,.047,.64,.035,i*.089,1.94,-7.629,false);
+        box(trim,2.38,.07,.58,0,1.58,-7.9);
+        const laptop = new T.Group();
+        laptop.position.set(.94,2.365,-7.94);
+        laptop.rotation.y = Math.atan2(.94, .73);
+        home.add(laptop);
+        box(trim,.355,.018,.246,0,.01,0,true,laptop);
+        box(road,.29,.003,.101,0,.021,.026,false,laptop);
+        box(paving,.09,.002,.05,0,.022,-.063,false,laptop);
+        const lid = new T.Group();
+        lid.position.set(0,.021,.116);
+        lid.rotation.x = .22;
+        laptop.add(lid);
+        box(trim,.355,.224,.015,0,.112,0,true,lid);
+        box(glass,.332,.199,.003,0,.113,-.008,false,lid);
+        box(paper,.31,.026,.23,-.53,2.376,-7.77,false).rotation.y = -.14;
+        box(brass,.016,.016,.17,-.48,2.398,-7.78,false).rotation.y = -.64;
+
+        // Rounded upholstery and tapered steel legs, built in chair-local space.
+        function cushionGeometry(width, height, depth, radius) {
+          const x = -width/2;
+          const y = -height/2;
+          const shape = new T.Shape();
+          shape.moveTo(x+radius,y);
+          shape.lineTo(x+width-radius,y);
+          shape.quadraticCurveTo(x+width,y,x+width,y+radius);
+          shape.lineTo(x+width,y+height-radius);
+          shape.quadraticCurveTo(x+width,y+height,x+width-radius,y+height);
+          shape.lineTo(x+radius,y+height);
+          shape.quadraticCurveTo(x,y+height,x,y+height-radius);
+          shape.lineTo(x,y+radius);
+          shape.quadraticCurveTo(x,y,x+radius,y);
+          const mesh = new T.ExtrudeGeometry(shape,{
+            depth:depth-.034,bevelEnabled:true,bevelSize:.017,bevelThickness:.017,bevelSegments:3,curveSegments:6
+          });
+          mesh.translate(0,0,-(depth-.034)/2);
+          return mesh;
+        }
+        const seatGeometry = cushionGeometry(.49,.5,.105,.055);
+        const backGeometry = cushionGeometry(.49,.43,.078,.08);
+        const legGeometry = new T.CylinderGeometry(.012,.019,1,8);
+        const up = new T.Vector3(0,1,0);
+
+        function chair(x,z,angle,fabric) {
+          const group = new T.Group();
+          group.position.set(x,1.57,z);
+          group.rotation.y = angle;
+          home.add(group);
+          const seat = new T.Mesh(seatGeometry,fabric);
+          seat.rotation.x = -Math.PI/2;
+          seat.position.y = .43;
+          const back = new T.Mesh(backGeometry,fabric);
+          back.position.set(0,.672,.225);
+          back.rotation.x = .15;
+          seat.castShadow = back.castShadow = true;
+          seat.receiveShadow = back.receiveShadow = true;
+          group.add(seat,back);
+          box(piping,.46,.06,.445,0,.377,0,false,group);
+          for (const side of [-1,1]) {
+            for (const end of [-1,1]) {
+              const foot = new T.Vector3(side*.224,.008,end*.225);
+              const joint = new T.Vector3(side*.18,.405,end*.169);
+              const direction = joint.clone().sub(foot);
+              const leg = new T.Mesh(legGeometry,trim);
+              leg.position.copy(foot).lerp(joint,.5);
+              leg.scale.y = direction.length();
+              leg.quaternion.setFromUnitVectors(up,direction.normalize());
+              leg.castShadow = true;
+              leg.receiveShadow = true;
+              group.add(leg);
+            }
+            box(trim,.022,.29,.022,side*.16,.5,.197,false,group).rotation.x = .15;
+          }
+        }
+        chair(-1.03,-6.47,-Math.PI/2,upholstery);
+        chair(1.03,-6.47,Math.PI/2,upholstery);
+        chair(0,-8.67,Math.PI,leather);
+        box(timber,1.19,.47,.41,2.29,1.78,-8.85);
+        box(paper,.22,.21,.19,2.46,2.12,-8.81,false);
+        for (const z of [-4.5,-6.52,-8.54]) {
+          box(lamp,.035,.024,1.15,-1.86,4.255,z,false);
+          box(lamp,.035,.024,1.15,1.86,4.255,z,false);
+        }
+        const officeLight = new T.SpotLight('#f4ecdf', 35, 10, .91, .6, 2);
+        officeLight.position.set(-.85,4.13,-6.88);
+        officeLight.target.position.set(.25,1.59,-7.75);
+        officeLight.castShadow = true;
+        officeLight.shadow.mapSize.set(1024,1024);
+        officeLight.shadow.camera.near = .2;
+        officeLight.shadow.camera.far = 8;
+        officeLight.shadow.normalBias = .014;
+        officeLight.shadow.bias = -.00016;
+        const fillLight = new T.PointLight('#d9e0e9', 6, 7, 2);
+        fillLight.position.set(1.86,3.7,-6.24);
+        const wallLight = new T.PointLight('#e6d4b9', 1.55, 2.05, 2);
+        wallLight.position.set(0,3.4,-8.82);
+        const hallLight = new T.PointLight('#e2e5e8', 12, 7, 2);
+        hallLight.position.set(0,3.8,-2.7);
+        world.add(officeLight,officeLight.target,fillLight,wallLight,hallLight);
+
+        // The last camera leg passes through the open central bay under this canopy.
+        box(stone, 10.2, .44, 5.1, 0, 4.26, 6.0);
+        box(trim, 10.13, .14, 5.05, 0, 4.05, 6);
+        box(brass, 10.21, .07, .07, 0, 4.38, 8.56);
+        for (const x of [-4.36,-2.30,2.30,4.36]) {
+          box(warmStone, .55, 3.77, .64, x, 2.1, 8.05);
+          box(trim, .62, .19, .71, x,.31,8.05);
+          box(brass, .05, 3.57, .024, x+.17,2.13,8.38,false);
+        }
+        for (const x of [-3.42,-1.2,1.2,3.42]) box(lamp,.034,.025,3.9,x,3.974,6.25,false);
+        for (const x of [-7.1,7.1]) {
+          box(stone, 2.7, .38, 3.85, x,.24,8.02);
+          box(grass, 2.45, .06, 3.60, x,.46,8.02);
+        }
+        const foliage = new T.IcosahedronGeometry(1, 1);
+        for (const [x,z,height] of [[-7.2,8.3,2.7],[7.2,8.5,2.35],[-11,2,3.3],[11,-1,3.1]]) {
+          box(trunk,.16,height,.17,x,height/2+.4,z);
+          for (const [dx,dy,dz,s] of [[0,0,0,1.04],[.63,-.34,.19,.69],[-.55,-.15,.16,.76],[.07,.15,-.65,.65]]) {
+            const leaves = new T.Mesh(foliage, grass);
+            leaves.position.set(x+dx,height+dy+.55,z+dz);
+            leaves.scale.set(s,s*.68,s);
+            leaves.castShadow = true;
+            home.add(leaves);
+          }
+        }
+        const distant = material('#827e78');
+        for (const [x,z,h,w] of [[-19,-15,6,6],[-26,-19,10,5],[17,-19,8,7],[26,-22,11,6],[-21,5,5,5]]) {
+          box(distant,w,h,5,x,h/2,z,false);
+        }
+
+        const makePath = values => new T.CatmullRomCurve3(values.map(value => new T.Vector3(...value)));
+        const cameraPath = makePath(positions);
+        const aimPath = makePath(targets);
+        const position = new T.Vector3();
+        const aim = new T.Vector3();
+        const sign = document.getElementById('office-sign');
+        const signPoint = new T.Vector3();
+        const signEdge = new T.Vector3();
+        let lastTime = 0;
+        let width = 0;
+        let height = 0;
+        renderer.shadowMap.needsUpdate = true;
+
+        function draw(time) {
+          lastTime = time;
+          if (width !== hero.clientWidth || height !== hero.clientHeight) {
+            width = hero.clientWidth;
+            height = hero.clientHeight;
+            camera.aspect = width / Math.max(1, height);
+            renderer.setSize(width, height, false);
+          }
+          const officeFraming = T.MathUtils.smoothstep(time, .79, 1);
+          const openingFov = camera.aspect < .8 ? 64 : 48;
+          const officeFov = camera.aspect < .8 ? 88 : 58;
+          camera.fov = T.MathUtils.lerp(openingFov, officeFov, officeFraming);
+          camera.updateProjectionMatrix();
+          camera.position.copy(cameraPath.getPoint(time, position));
+          // Give portrait screens enough distance to fit the front of the desk.
+          if (camera.aspect < .8) camera.position.z += .95 * officeFraming;
+          camera.lookAt(aimPath.getPoint(time, aim));
+          const open = T.MathUtils.smoothstep(time, .398, .475);
+          doors[0].rotation.y = open * 1.49;
+          doors[1].rotation.y = -open * 1.49;
+          renderer.render(world, camera);
+          const visible = time >= .9;
+          hero.classList.toggle('office-visible', visible);
+          sign.hidden = !visible;
+          if (visible) {
+            signPoint.set(0,3.31,-9.085).project(camera);
+            signEdge.set(.47,3.31,-9.085).project(camera);
+            sign.style.left = `${(signPoint.x + 1) * 50}%`;
+            sign.style.top = `${(1 - signPoint.y) * 50}%`;
+            sign.style.width = `${Math.abs(signEdge.x - signPoint.x) * width}px`;
+          }
+        }
+        new ResizeObserver(() => {
+          if (!canvas.hidden && !playing) draw(lastTime);
+        }).observe(hero);
+        return { draw, atOffice: () => lastTime === 1 };
+      }
+
+      function watchHero() {
+        if (!('IntersectionObserver' in window)) return;
+        // Initial playback is handled by prepare. The observer handles re-entry.
+        // A separate exit threshold keeps small scroll movements from restarting it.
+        let inView;
+        new IntersectionObserver(([entry]) => {
+          const ratio = entry.intersectionRatio;
+          if (inView === undefined) {
+            inView = ratio > .25;
+            if (!inView && playing) finish();
+          } else if (ratio <= .25) {
+            inView = false;
+            if (playing) finish();
+          } else if (!inView && ratio >= .60) {
+            inView = true;
+            play();
+          }
+        }, {threshold:[.25,.60]}).observe(hero);
+      }
+      canvas.addEventListener('webglcontextlost', () => {
+        canvas.hidden = true;
+        document.getElementById('office-sign').hidden = true;
+        hero.classList.remove('office-visible');
+        scene = null;
+        finish(false);
+      });
+      reduce.addEventListener('change', event => {
+        if (event.matches) finish();
+      });
+
+      async function prepare() {
+        if (reduce.matches || !window.WebGL2RenderingContext) return;
+        const context = canvas.getContext('webgl2', { antialias:true, alpha:false });
+        if (!context) return;
+        if (hero.getBoundingClientRect().top >= -72) {
+          hero.classList.add('fly-loading');
+          // Restore the text on slow connections without cancelling playback.
+          timeout = setTimeout(() => hero.classList.remove('fly-loading'), 2400);
+        }
+        try {
+          const T = await import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js');
+          scene = createScene(T, context);
+          const bounds = hero.getBoundingClientRect();
+          const visibleHeight = Math.min(bounds.bottom, innerHeight) - Math.max(bounds.top, 0);
+          if (!reduce.matches && visibleHeight >= Math.min(bounds.height, innerHeight) * .60) play();
+          else {
+            canvas.hidden = false;
+            scene.draw(1);
+            finish(false);
+          }
+          watchHero();
+        } catch (error) {
+          canvas.hidden = true;
+          scene = null;
+          finish(false);
+          console.warn('Architectural intro unavailable:', error);
+        }
+      }
+
+      prepare();
+    })();
   </script>
 </body>
 </html>
