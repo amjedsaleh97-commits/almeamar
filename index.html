@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>المعمار الشامل للمقاولات العامة والاستثمار العقاري | مصراتة</title>
+  <meta name="description" content="المعمار الشامل للمقاولات العامة والاستثمار العقاري في مصراتة، ليبيا. خدمات البناء والتشييد والتشطيبات والإشراف الهندسي وإدارة المشاريع.">
+  <meta name="theme-color" content="#20201f">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_LY">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Almiemar Alshaamil">
+  <meta property="og:title" content="المعمار الشامل للمقاولات العامة والاستثمار العقاري">
+  <meta property="og:description" content="المقاولات العامة والبناء والاستثمار العقاري في مصراتة، ليبيا.">
+  <!-- Set og:image to the absolute image URL once a public domain is available. -->
+  <meta property="og:image" content="./شعار.jpeg">
+  <link rel="icon" type="image/jpeg" href="./شعار.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap">
+  <style>
+    :root{--dark:#20201f;--ink:#292827;--muted:#5c5852;--paper:#f6f5f2;--line:#e6e1d8;--gold:#e8d3a2;--gold-dark:#79531f;--gradient:linear-gradient(115deg,#e8d3a2,#c9a063 62%,#b8863b);--nav:74px;--hero-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=82')}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 14px)}
+    body{margin:0;background:white;color:var(--ink);font:500 1rem/1.85 Cairo,Arial,sans-serif}
+    html[lang=en] body{font-family:Montserrat,Arial,sans-serif;line-height:1.65}
+    h1,h2,h3,p,figure{margin:0} h1,h2,h3{line-height:1.25;font-weight:800}
+    a{color:inherit;text-decoration:none} button,input,textarea{font:inherit} button{cursor:pointer;color:inherit}
+    img{display:block;max-width:100%} [hidden]{display:none!important}
+    :focus-visible{outline:3px solid #b88135;outline-offset:4px}
+    .wrap{width:min(100% - 2rem,1200px);margin-inline:auto}
+    .icon{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:middle}
+    .skip{position:fixed;inset-block-start:8px;inset-inline-start:8px;transform:translateY(-150%);background:white;color:var(--ink);padding:.55rem 1rem;z-index:20}.skip:focus{transform:none}
+    .header{position:fixed;inset:0 0 auto;z-index:10;color:white;background:#20201f58;border-bottom:1px solid #ffffff22;transition:background .25s}
+    .header.solid,.header.open{background:var(--dark)}
+    .nav{min-height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:inline-flex;align-items:center;gap:.7rem;font-weight:800;line-height:1.2}
+    /* Show the original white-on-charcoal emblem from the lower-right of the brand sheet. */
+    .mark{position:relative;display:block;flex:none;width:58px;aspect-ratio:1.2;overflow:hidden;border:1px solid #e8d3a25c;border-radius:3px;background:#3c3c3c;direction:ltr}
+    .mark img{position:absolute;max-width:none;width:295%;height:auto;left:-170%;top:-212%}
+    .hero-mark{width:clamp(92px,11vw,122px);margin-block-end:1.25rem;border-color:#e8d3a294;box-shadow:0 3px 18px #15141255}
+    .navlinks{display:none;position:absolute;inset:100% 0 auto;background:var(--dark);padding:.6rem 1rem 1.1rem;border-bottom:1px solid #ffffff25}
+    .header.open .navlinks{display:grid}.navlinks a{display:block;padding:.65rem;font-weight:700;font-size:.9rem}.navlinks a:hover,.footer a:hover{color:var(--gold)}
+    .nav-actions{display:flex;gap:.55rem}.control{background:transparent;color:inherit;border:1px solid #ffffff55;border-radius:3px;min-width:44px;min-height:44px;padding:.2rem .65rem;font-size:.82rem;font-weight:800}
+    .language{direction:ltr}.language span[aria-current]{color:var(--gold)}
+    .hero{position:relative;min-height:100vh;min-height:100svh;display:grid;align-items:center;background:#252524;color:white;isolation:isolate;padding:calc(var(--nav) + 3.2rem) 0 5rem;overflow:hidden}
+    /* Move the photo on its own layer so the text and dark overlay stay still. */
+    .hero-photo{position:absolute;inset:-7%;z-index:-2;pointer-events:none;background:var(--hero-image) center 52%/cover no-repeat;animation:hero-camera 11s cubic-bezier(.45,.05,.55,.95) infinite alternate}
+    .hero[data-motion-paused] .hero-photo{animation-play-state:paused}
+    .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to left,#191918e6 0%,#20201eb8 43%,#22221f48 100%),linear-gradient(0deg,#191918bd,transparent 58%)}
+    html[dir=ltr] .hero::before{background:linear-gradient(to right,#191918e6 0%,#20201eb8 43%,#22221f48 100%),linear-gradient(0deg,#191918bd,transparent 58%)}
+    .motion-toggle{position:absolute;inset-block-end:1rem;inset-inline-start:max(1rem,calc((100% - 1200px)/2));display:grid;place-items:center;width:44px;padding:0;background:#20201fc9}
+    .motion-toggle .play,.hero[data-motion-paused] .motion-toggle .pause{display:none}
+    .hero[data-motion-paused] .motion-toggle .play{display:block}
+    .hero-inner{position:relative}.hero-copy{max-width:700px}
+    /* The entrance plays once. Each line arrives in reading order. */
+    .hero-copy > *{animation:enter .72s cubic-bezier(.2,.75,.25,1) both}
+    .hero-copy > :nth-child(2){animation-delay:.08s}
+    .hero-copy > :nth-child(3){animation-delay:.16s}
+    .hero-copy > :nth-child(4){animation-delay:.23s}
+    .hero-copy > :nth-child(5){animation-delay:.30s}
+    .hero-copy > :nth-child(6){animation-delay:.39s}
+    .hero h1{font-size:clamp(2.65rem,7.3vw,6.15rem);line-height:1.12;margin:.55rem 0 .6rem}
+    html[lang=en] .hero h1{font-size:clamp(2.55rem,6.6vw,5.6rem);letter-spacing:-.065em}
+    .hero-tag{font-size:clamp(1.12rem,2.6vw,1.8rem);color:#f0deba;font-weight:700;line-height:1.45}
+    .hero-note{max-width:49ch;color:#eee9e0;margin-block:1.1rem 1.8rem}
+    .location-label{display:inline-flex;align-items:center;gap:.45rem;color:var(--gold);font-weight:700;font-size:.9rem}
+    .location-label::before{content:"";width:29px;height:1px;background:var(--gradient);margin-inline-end:.15rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.65rem}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:.55rem;min-height:48px;padding:.62rem 1.1rem;border:1px solid transparent;border-radius:3px;font-size:.91rem;font-weight:800;transition:transform .2s,background-color .2s}
+    .btn:hover{transform:translateY(-2px)}.btn.gold{background:var(--gradient);color:#211b12}.btn.outline{border-color:#ffffff8a;color:white;background:#1b1b1b40}.btn.outline:hover{background:#1b1b1b9e}
+    .hero-frame{display:none;pointer-events:none;position:absolute;inset-block:0;inset-inline-end:1.25rem;width:26%;border:1px solid #e8d3a278;border-inline-start:0;animation:draw-frame 1.25s .12s cubic-bezier(.2,.75,.25,1) both}
+    .hero-frame::after{content:"";position:absolute;inset:13px -12px -13px 12px;border:1px solid #e8d3a249}
+    .hero-frame::before{content:"";position:absolute;inset:-1px -1px auto;width:46%;height:2px;background:var(--gradient);box-shadow:0 0 14px #e8d3a288;animation:frame-accent 1.15s .25s ease-out both}
+    .section{padding-block:clamp(3.5rem,8vw,7rem)}.tinted{background:var(--paper)}
+    .section h2{font-size:clamp(1.9rem,4.8vw,3.15rem);margin-bottom:.85rem;letter-spacing:-.025em}
+    .section h2::before{content:"";display:block;width:53px;height:3px;background:var(--gradient);margin-bottom:1rem}
+    .intro{max-width:68ch;color:var(--muted)}.section-head{margin-bottom:1.9rem}
+    .about-grid,.contact-grid{display:grid;gap:2rem}
+    .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);background:var(--line);gap:1px}
+    .stat{background:white;padding:.85rem 1rem;min-width:0}.stat strong{display:block;font-size:clamp(1.8rem,4vw,2.7rem);color:var(--gold-dark);line-height:1.2;font-variant-numeric:tabular-nums}.stat span{font-size:.88rem}
+    .sample{margin-top:.55rem;color:var(--muted);font-size:.82rem}
+    .services,.gallery,.why-grid{display:grid;gap:.9rem}
+    .service{border:1px solid var(--line);border-radius:4px;background:white;padding:1.4rem;transition:transform .24s,border-color .24s,box-shadow .24s}
+    .service:hover{transform:translateY(-4px);border-color:#ba965b;box-shadow:0 14px 28px #3b2a1110}
+    .tile-icon{display:grid;place-items:center;width:49px;height:49px;background:#f4ebdb;color:var(--gold-dark);border-radius:3px;margin-bottom:1rem;font-size:1.3rem}
+    .service h3,.reason h3{font-size:1.13rem;margin-bottom:.45rem}.service p,.reason p{font-size:.94rem;color:var(--muted)}
+    .project{display:block;position:relative;isolation:isolate;width:100%;aspect-ratio:1.45;overflow:hidden;border:0;border-radius:4px;background:#353430;padding:0;color:white;text-align:start}
+    .project img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .project::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#171715e8,transparent 69%);transition:background-color .25s}
+    .project:hover img,.project:focus-visible img{transform:scale(1.055)}.project:hover::after,.project:focus-visible::after{background-color:#20170b55}
+    .project-label{position:absolute;inset:auto 1rem .9rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem;z-index:1;font-weight:800}
+    .zoom{display:grid;place-items:center;border:1px solid #ffffff88;border-radius:50%;width:36px;height:36px;flex:none}
+    .why{background:#272624;color:white}.why .intro,.reason p{color:#e1dcd3}.reason{padding:1rem 0;border-top:1px solid #e8d3a263}.reason .icon{color:var(--gold);width:30px;height:30px;margin-bottom:.65rem}.why-grid{margin-top:1.5rem}
+    .details{display:grid;gap:.6rem;margin-block:1.2rem}.details a,.details p{display:flex;align-items:center;gap:.6rem;width:fit-content}.details .icon{color:var(--gold-dark)}.details a:hover{text-decoration:underline}
+    .map{display:block;width:100%;height:255px;border:1px solid var(--line);border-radius:4px;background:#e9e6df}
+    .form-card{display:grid;gap:.85rem;align-content:start;border:1px solid var(--line);border-radius:4px;background:white;padding:clamp(1rem,4vw,2rem)}
+    .form-card h3{font-size:1.38rem}.form-card .hint{font-size:.9rem;color:var(--muted)}.field{display:grid;gap:.24rem;font-weight:700;font-size:.91rem}
+    input,textarea{width:100%;border:1px solid #ccc5ba;border-radius:3px;padding:.6rem .7rem;background:#fff;color:var(--ink);font-size:1rem}textarea{resize:vertical;min-height:7rem}.form-card .btn{justify-self:start}
+    .footer{background:#1c1c1b;color:#f5f1e9;padding-block:2.5rem 1rem}.footer-grid{display:grid;gap:1.5rem}.footer h2{font-size:1.05rem;margin-bottom:.6rem}.footer p,.footer li{font-size:.9rem;color:#d9d3c8}.footer .brand{margin-bottom:.65rem;color:white}.footer ul{list-style:none;padding:0;margin:0;display:grid;gap:.3rem}.copyright{border-top:1px solid #ffffff29;margin-top:1.8rem;padding-top:1rem}
+    .floating{position:fixed;inset-inline-end:1rem;inset-block-end:max(1rem,env(safe-area-inset-bottom));z-index:6;display:grid;gap:.5rem}.fab{display:grid;place-items:center;width:49px;height:49px;border:1px solid #ffffff42;border-radius:50%;box-shadow:0 3px 14px #0003;background:#242322;color:white}.fab.wa{background:#185d42;font-size:1.3rem}.fab:hover{filter:brightness(1.18)}
+    dialog{padding:0;border:1px solid #e8d3a288;border-radius:5px;background:var(--dark);color:white;width:min(920px,calc(100% - 2rem));max-height:calc(100% - 2rem)}dialog::backdrop{background:#141412e8}.lightbox-img{width:100%;height:min(59vh,580px);object-fit:contain;background:#151515}.lightbox-bar{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.6rem .85rem}.lightbox-bar div{display:flex;gap:.35rem}.lightbox-bar button{font-size:1.15rem}.close-lightbox{position:absolute;inset-block-start:.5rem;inset-inline-end:.5rem;background:#20201fdb}
+    .pending{opacity:0;transform:translateY(16px)}.reveal{transition:opacity .55s ease,transform .55s ease}
+    .reveal.arrived :is(.service,.reason,.project){animation:enter .55s cubic-bezier(.2,.75,.25,1) backwards;animation-delay:var(--card-delay,0ms)}
+    .reveal.arrived :is(.service,.reason,.project):nth-child(2){--card-delay:65ms}
+    .reveal.arrived :is(.service,.reason,.project):nth-child(3){--card-delay:130ms}
+    .reveal.arrived :is(.service,.reason,.project):nth-child(4){--card-delay:195ms}
+    .reveal.arrived :is(.service,.project):nth-child(5){--card-delay:260ms}
+    .reveal.arrived :is(.service,.project):nth-child(6){--card-delay:325ms}
+    .reveal:focus-within,.reveal:focus-within :is(.service,.reason,.project){opacity:1;transform:none;animation:none;transition:none}
+    @keyframes enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes hero-camera{from{transform:translate3d(-3%,2%,0) scale(1.01)}to{transform:translate3d(4%,-3%,0) scale(1.22)}}
+    @keyframes draw-frame{from{opacity:0;clip-path:inset(0 -16px 100%)}to{opacity:1;clip-path:inset(0 -16px -16px)}}
+    @keyframes frame-accent{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+    @media(max-width:420px){.stat{padding:.7rem .5rem}.stat span{font-size:.8rem}}
+    @media(min-width:570px){.wrap{width:min(100% - 3rem,1200px)}.services,.gallery,.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-grid{grid-template-columns:1.2fr 1fr 1fr}}
+    @media(min-width:800px){.about-grid,.contact-grid{grid-template-columns:1fr 1fr;align-items:start;gap:clamp(2rem,6vw,5rem)}.why-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.4rem}.gallery,.services{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-frame{display:block}.hero-copy{width:72%}.footer ul{grid-auto-flow:row}}
+    @media(min-width:1040px){:root{--nav:82px}.navlinks,.header.open .navlinks{position:static;display:flex;align-items:center;gap:.32rem;padding:0;background:none;border:0}.menu-button{display:none}.navlinks a{white-space:nowrap}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.pending{opacity:1;transform:none}.motion-toggle{display:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main" data-ar="انتقل إلى المحتوى" data-en="Skip to content">انتقل إلى المحتوى</a>
+  <!-- Reusable inline icons keep the page independent of icon libraries. -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0" aria-hidden="true" focusable="false">
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5v18m0-12h7v12M8 10v1m0 3v1m0 3v1m8-6v1m0 3v1"/></symbol>
+    <symbol id="i-crane" viewBox="0 0 24 24"><path d="M3 21h10M7 21V3m-4 4h18L7 3 3 7zm14 0v7a2 2 0 1 0 4 0M7 11l4 3-4 3"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l5-5 4 2 5-7m-5 0h5v5"/></symbol>
+    <symbol id="i-interior" viewBox="0 0 24 24"><path d="M4 20v-4m16 4v-4M7 13V8a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v5m-10-1H4a2 2 0 0 0-2 2v3h20v-3a2 2 0 0 0-2-2h-3m-10 1h10"/></symbol>
+    <symbol id="i-plan" viewBox="0 0 24 24"><path d="M9 4H5v17h14V4h-4M9 3h6v4H9zm-1 9h8m-8 4h8"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 3v18h18L3 3zm4 9v5h5M4 7l2-2m1 5 2-2m1 5 2-2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11zm-4-10 3 3 5-6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2m1-15a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 4v2"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 4h8l10 10-7 7L3 10z"/><circle cx="7.5" cy="8" r="1"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3H3c-1 9 9 19 18 18v-5l-5-2-2 2a14 14 0 0 1-6-6l2-2-2-5z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20.8 11.8a8.8 8.8 0 0 1-13 7.8L3 21l1.4-4.6a8.8 8.8 0 1 1 16.4-4.6z"/><path d="M8.6 7.6c-.8 0-1.2.7-1.2 1.5 0 2.9 3.7 6.5 6.7 6.5.8 0 1.5-.6 1.6-1.4l-2.3-1.1-1 1a7 7 0 0 1-3.1-3.1l.8-.9-1-2.5z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="m5 14 7-7 7 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14m6-14v14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 12 7-12 7z"/></symbol>
+  </svg>
+
+  <header class="header" id="header">
+    <div class="wrap nav">
+      <a class="brand" href="#home"><span class="mark"><img src="./شعار.jpeg" alt=""></span><span data-ar="المعمار الشامل" data-en="Almiemar Alshaamil">المعمار الشامل</span></a>
+      <nav id="navigation" class="navlinks" aria-label="التنقل الرئيسي" data-aria-ar="التنقل الرئيسي" data-aria-en="Main navigation">
+        <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <a href="#about" data-ar="من نحن" data-en="About">من نحن</a>
+        <a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+        <a href="#projects" data-ar="مشاريعنا" data-en="Projects">مشاريعنا</a>
+        <a href="#why" data-ar="لماذا نحن" data-en="Why us">لماذا نحن</a>
+        <a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="language" type="button" class="control language" aria-label="Switch to English"><span lang="ar" aria-current="true">AR</span> / <span lang="en">EN</span></button>
+        <button id="menu" type="button" class="control menu-button" aria-controls="navigation" aria-expanded="false" aria-label="القائمة" data-aria-ar="القائمة" data-aria-en="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-photo" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-frame" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <span class="mark hero-mark"><img src="./شعار.jpeg" alt=""></span>
+          <p class="location-label" data-ar="مصراتة، ليبيا" data-en="Misurata, Libya">مصراتة، ليبيا</p>
+          <h1 id="hero-title" data-ar="المعمار الشامل" data-en="Almiemar Alshaamil">المعمار الشامل</h1>
+          <p class="hero-tag" data-ar="للمقاولات العامة والاستثمار العقاري" data-en="For general contracting and real estate investment">للمقاولات العامة والاستثمار العقاري</p>
+          <p class="hero-note" data-ar="من التخطيط والإشراف الهندسي إلى البناء والتشطيبات، نواكب مشروعك في كل مرحلة." data-en="From planning and engineering supervision to construction and finishing, we support your project at every stage.">من التخطيط والإشراف الهندسي إلى البناء والتشطيبات، نواكب مشروعك في كل مرحلة.</p>
+          <div class="actions">
+            <a class="btn gold" href="#contact" data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</a>
+            <a class="btn outline" href="https://wa.me/218918090666" target="_blank" rel="noopener" data-wa><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span data-ar="تواصل عبر واتساب" data-en="Chat on WhatsApp">تواصل عبر واتساب</span></a>
+          </div>
+        </div>
+      </div>
+      <button id="hero-motion" type="button" class="control motion-toggle" aria-pressed="false" aria-label="إيقاف حركة صورة الواجهة مؤقتاً" data-aria-ar="إيقاف حركة صورة الواجهة مؤقتاً" data-aria-en="Pause background motion">
+        <svg class="icon pause" aria-hidden="true"><use href="#i-pause"/></svg>
+        <svg class="icon play" aria-hidden="true"><use href="#i-play"/></svg>
+      </button>
+    </section>
+
+    <!-- Edit static copy in paired data-ar / data-en attributes and in the Arabic fallback text. -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="wrap about-grid reveal">
+        <div><h2 id="about-title" data-ar="من نحن" data-en="About us">من نحن</h2><p class="intro" data-ar="المعمار الشامل شركة ليبية مقرّها مصراتة، تعمل في المقاولات العامة والاستثمار العقاري. نقدّم خدمات البناء والتشييد والتشطيبات، إلى جانب إدارة المشاريع وتطويرها والإشراف الهندسي عليها، مع التركيز على جودة التنفيذ والالتزام بالجدول المتفق عليه." data-en="Almiemar Alshaamil is a Libyan general contracting and real estate investment company based in Misurata. We provide construction and finishing services as well as project management, development, and engineering supervision, with a focus on workmanship and agreed schedules.">المعمار الشامل شركة ليبية مقرّها مصراتة، تعمل في المقاولات العامة والاستثمار العقاري. نقدّم خدمات البناء والتشييد والتشطيبات، إلى جانب إدارة المشاريع وتطويرها والإشراف الهندسي عليها، مع التركيز على جودة التنفيذ والالتزام بالجدول المتفق عليه.</p></div>
+        <div><div class="stats" id="stats"></div><p class="sample" data-ar="أعداد العملاء والمشاريع الجارية توضيحية." data-en="Client and ongoing project counts are illustrative.">أعداد العملاء والمشاريع الجارية توضيحية.</p></div>
+      </div>
+    </section>
+
+    <section id="services" class="section tinted" aria-labelledby="services-title">
+      <div class="wrap reveal"><div class="section-head"><h2 id="services-title" data-ar="خدماتنا" data-en="Our services">خدماتنا</h2><p class="intro" data-ar="خدمات تغطي مراحل المشروع، من التخطيط إلى التنفيذ والتسليم." data-en="Support across the project lifecycle, from planning through construction and handover.">خدمات تغطي مراحل المشروع، من التخطيط إلى التنفيذ والتسليم.</p></div><div class="services" id="service-list"></div></div>
+    </section>
+
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="wrap reveal"><div class="section-head"><h2 id="projects-title" data-ar="مشاريعنا" data-en="Project gallery">مشاريعنا</h2><p class="intro" data-ar="صور معمارية توضيحية. اختر صورة لعرضها بحجم أكبر." data-en="Illustrative architecture photography. Select an image to enlarge it.">صور معمارية توضيحية. اختر صورة لعرضها بحجم أكبر.</p></div><div class="gallery" id="gallery"></div></div>
+    </section>
+
+    <section id="why" class="section why" aria-labelledby="why-title">
+      <div class="wrap reveal"><h2 id="why-title" data-ar="لماذا نحن" data-en="Why choose us">لماذا نحن</h2><div class="why-grid" id="reasons"></div></div>
+    </section>
+
+    <section id="contact" class="section tinted" aria-labelledby="contact-title">
+      <div class="wrap contact-grid reveal">
+        <div><h2 id="contact-title" data-ar="تواصل معنا" data-en="Contact us">تواصل معنا</h2><p class="intro" data-ar="أخبرنا عن مشروعك أو تواصل معنا مباشرة لطلب عرض سعر." data-en="Tell us about your project or get in touch directly for a quote.">أخبرنا عن مشروعك أو تواصل معنا مباشرة لطلب عرض سعر.</p>
+          <div class="details" id="contact-phones"></div>
+          <iframe class="map" title="خريطة مصراتة، ليبيا" data-title-ar="خريطة مصراتة، ليبيا" data-title-en="Map of Misurata, Libya" loading="lazy" src="https://maps.google.com/maps?q=Misurata%2C%20Libya&amp;z=12&amp;output=embed" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <form id="contact-form" class="form-card">
+          <h3 data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</h3>
+          <p id="form-hint" class="hint" data-ar="يفتح واتساب برسالتك الجاهزة للمراجعة والإرسال." data-en="WhatsApp opens with your message ready to review and send.">يفتح واتساب برسالتك الجاهزة للمراجعة والإرسال.</p>
+          <label class="field"><span data-ar="الاسم" data-en="Name">الاسم</span><input name="name" autocomplete="name" maxlength="100" required></label>
+          <label class="field"><span data-ar="رقم الهاتف" data-en="Phone number">رقم الهاتف</span><input name="phone" type="tel" autocomplete="tel" dir="ltr" maxlength="35" required></label>
+          <label class="field"><span data-ar="الرسالة" data-en="Message">الرسالة</span><textarea name="message" dir="auto" maxlength="1500" required></textarea></label>
+          <button type="submit" class="btn gold" aria-describedby="form-hint"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span data-ar="متابعة عبر واتساب" data-en="Continue on WhatsApp">متابعة عبر واتساب</span></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap"><div class="footer-grid">
+      <div><a class="brand" href="#home"><span class="mark"><img src="./شعار.jpeg" alt="" loading="lazy"></span><span data-ar="المعمار الشامل" data-en="Almiemar Alshaamil">المعمار الشامل</span></a><p data-ar="للمقاولات العامة والاستثمار العقاري في مصراتة، ليبيا." data-en="For general contracting and real estate investment in Misurata, Libya.">للمقاولات العامة والاستثمار العقاري في مصراتة، ليبيا.</p></div>
+      <div><h2 data-ar="روابط سريعة" data-en="Quick links">روابط سريعة</h2><ul id="footer-links"></ul></div>
+      <div><h2 data-ar="أرقام التواصل" data-en="Phone numbers">أرقام التواصل</h2><ul id="footer-phones"></ul></div>
+    </div><p class="copyright" data-ar="© 2026 المعمار الشامل" data-en="© 2026 Almiemar Alshaamil">© 2026 المعمار الشامل</p></div>
+  </footer>
+
+  <div class="floating">
+    <button id="top" class="fab" type="button" hidden aria-label="العودة إلى الأعلى" data-aria-ar="العودة إلى الأعلى" data-aria-en="Back to top"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg></button>
+    <a class="fab wa" href="https://wa.me/218918090666" data-wa target="_blank" rel="noopener" aria-label="تواصل عبر واتساب" data-aria-ar="تواصل عبر واتساب" data-aria-en="Chat on WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg></a>
+  </div>
+
+  <dialog id="lightbox" aria-labelledby="lightbox-title">
+    <button type="button" class="control close-lightbox" id="close-lightbox" autofocus aria-label="إغلاق" data-aria-ar="إغلاق" data-aria-en="Close">×</button>
+    <img class="lightbox-img" id="lightbox-img" alt="">
+    <div class="lightbox-bar"><p id="lightbox-title" aria-live="polite"></p><div>
+      <button type="button" class="control" id="previous" aria-label="الصورة السابقة" data-aria-ar="الصورة السابقة" data-aria-en="Previous image">‹</button>
+      <button type="button" class="control" id="next" aria-label="الصورة التالية" data-aria-ar="الصورة التالية" data-aria-en="Next image">›</button>
+    </div></div>
+  </dialog>
+
+  <script>
+    /* EDIT HERE: phone numbers, counters, bilingual cards and gallery paths. */
+    const phones = ['+218 91 809 0666', '+218 92 809 0666', '+218 91 881 5046'];
+    const whatsapp = phones[0].replace(/\D/g, '');
+    const stats = [
+      [2, 'سنوات الخبرة', 'Years of experience'],
+      [35, 'عميلاً سعيداً', 'Happy clients'], [8, 'مشاريع جارية', 'Ongoing projects']
+    ];
+    const services = [
+      ['building','المقاولات العامة','General Contracting','تنسيق أعمال المقاولات وتنفيذها وفق متطلبات المشروع.','Coordination and delivery of contracting work in line with project requirements.'],
+      ['crane','البناء والتشييد','Construction','تنفيذ الأعمال الإنشائية للمباني السكنية والتجارية.','Structural and building work for residential and commercial properties.'],
+      ['chart','الاستثمار العقاري','Real Estate Investment','دراسة فرص الاستثمار العقاري وتطويرها.','Assessment and development of real estate investment opportunities.'],
+      ['interior','التشطيبات والديكور','Finishing & Interior','أعمال التشطيب الداخلي والديكور بما يلائم استخدام المساحة.','Interior finishing and decoration tailored to the use of each space.'],
+      ['plan','إدارة وتطوير المشاريع','Project Management & Development','تخطيط مراحل المشروع وتنسيق فرق العمل ومتابعة التقدم.','Project planning, team coordination, and progress tracking.'],
+      ['ruler','الإشراف الهندسي','Engineering Supervision','متابعة الأعمال الميدانية والتحقق من توافق التنفيذ مع المخططات.','Site oversight and review of construction against project drawings.']
+    ];
+    const reasons = [
+      ['shield','جودة التنفيذ','Quality workmanship','متابعة أعمال التنفيذ والتشطيبات وفق المواصفات المتفق عليها.','Work and finishes reviewed against agreed specifications.'],
+      ['clock','الالتزام بالمواعيد','Commitment to deadlines','جدولة مراحل العمل ومتابعة تقدمها.','Planned milestones and ongoing progress tracking.'],
+      ['team','فريق متخصص','Specialist team','تنسيق بين فرق التنفيذ والإشراف الهندسي.','Coordination between construction and engineering supervision teams.'],
+      ['tag','أسعار تنافسية','Competitive pricing','عروض أسعار واضحة تستند إلى نطاق الأعمال.','Clear quotations based on the scope of work.']
+    ];
+    const photo = id => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=76`;
+    // Replace photo(...) with a relative path such as './images/project-1.webp'.
+    const projects = [
+      [photo('photo-1486406146926-c627a92ad1ab'), 'واجهات تجارية', 'Commercial façades', 'أبراج زجاجية من زاوية منخفضة', 'Glass office towers viewed from below'],
+      [photo('photo-1600596542815-ffad4c1539a9'), 'عمارة سكنية', 'Residential architecture', 'منزل حديث بواجهة متعددة المستويات', 'Modern home with a layered façade'],
+      [photo('photo-1503387762-592deb58ef4e'), 'التخطيط الهندسي', 'Engineering planning', 'مخططات وأدوات هندسية', 'Architectural drawings and drafting tools'],
+      [photo('photo-1600210492486-724fe5c67fb0'), 'التشطيبات الداخلية', 'Interior finishing', 'مساحة معيشة بتشطيبات داخلية هادئة', 'Living space with neutral interior finishes'],
+      [photo('photo-1487958449943-2429e8be8625'), 'نماذج معمارية', 'Architectural forms', 'مبنى معاصر بتفاصيل هندسية', 'Contemporary architecture with geometric detailing'],
+      [photo('photo-1600607687939-ce8a6c25118c'), 'تصميم المساحات', 'Space design', 'مساحة داخلية بتصميم معاصر', 'Contemporary interior space']
+    ];
+
+    const $ = id => document.getElementById(id);
+    const root = document.documentElement;
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const desktop = matchMedia('(min-width: 1040px)');
+    const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+    let language = 'ar';
+    let activeProject = 0;
+    let galleryTrigger;
+
+    function bilingual(element, ar, en) {
+      element.dataset.ar = ar;
+      element.dataset.en = en;
+      element.textContent = ar;
+      return element;
+    }
+
+    function renderCards(target, items, className, withTile) {
+      for (const [symbol, ar, en, descriptionAr, descriptionEn] of items) {
+        const card = document.createElement('article');
+        card.className = className;
+        card.innerHTML = withTile ? `<span class="tile-icon">${icon(symbol)}</span>` : icon(symbol);
+        card.append(bilingual(document.createElement('h3'), ar, en), bilingual(document.createElement('p'), descriptionAr, descriptionEn));
+        $(target).append(card);
+      }
+    }
+
+    renderCards('service-list', services, 'service', true);
+    renderCards('reasons', reasons, 'reason', false);
+
+    for (const [value, ar, en] of stats) {
+      const card = document.createElement('div');
+      card.className = 'stat';
+      const number = document.createElement('strong');
+      number.dataset.count = String(value);
+      number.textContent = value;
+      card.append(number, bilingual(document.createElement('span'), ar, en));
+      $('stats').append(card);
+    }
+
+    for (const phone of phones) {
+      const link = document.createElement('a');
+      const number = document.createElement('bdi');
+      number.dir = 'ltr';
+      number.textContent = phone;
+      link.href = `tel:${phone.replace(/\s/g, '')}`;
+      link.append(number);
+      const item = document.createElement('li');
+      item.append(link.cloneNode(true));
+      $('footer-phones').append(item);
+      link.insertAdjacentHTML('afterbegin', icon('phone'));
+      $('contact-phones').append(link);
+    }
+    const city = document.createElement('p');
+    city.innerHTML = icon('pin');
+    city.append(bilingual(document.createElement('span'), 'مصراتة، ليبيا', 'Misurata, Libya'));
+    $('contact-phones').append(city);
+    for (const link of $('navigation').querySelectorAll('a')) {
+      const item = document.createElement('li');
+      item.append(link.cloneNode(true));
+      $('footer-links').append(item);
+    }
+    document.querySelectorAll('[data-wa]').forEach(link => { link.href = `https://wa.me/${whatsapp}`; });
+
+    projects.forEach(([src, ar, en, altAr, altEn], index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'project';
+      const image = new Image();
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.dataset.altAr = altAr;
+      image.dataset.altEn = altEn;
+      image.src = src;
+      const label = document.createElement('span');
+      label.className = 'project-label';
+      label.append(bilingual(document.createElement('span'), ar, en));
+      label.insertAdjacentHTML('beforeend', `<span class="zoom">${icon('plus')}</span>`);
+      button.append(image, label);
+      button.addEventListener('click', () => {
+        galleryTrigger = button;
+        showProject(index);
+        $('lightbox').showModal();
+      });
+      $('gallery').append(button);
+    });
+
+    function showProject(index) {
+      activeProject = (index + projects.length) % projects.length;
+      const [src, ar, en, altAr, altEn] = projects[activeProject];
+      $('lightbox-img').src = src;
+      $('lightbox-img').alt = language === 'ar' ? altAr : altEn;
+      $('lightbox-title').textContent = language === 'ar' ? ar : en;
+    }
+
+    function setLanguage(next) {
+      language = next;
+      const arabic = next === 'ar';
+      const suffix = arabic ? 'Ar' : 'En';
+      root.lang = next;
+      root.dir = arabic ? 'rtl' : 'ltr';
+      document.title = arabic ? 'المعمار الشامل للمقاولات العامة والاستثمار العقاري | مصراتة' : 'Almiemar Alshaamil | General Contracting & Real Estate Investment';
+      document.querySelectorAll('[data-ar][data-en]').forEach(node => { node.textContent = node.dataset[next]; });
+      document.querySelectorAll('[data-aria-ar]').forEach(node => node.setAttribute('aria-label', node.dataset[`aria${suffix}`]));
+      document.querySelectorAll('[data-alt-ar]').forEach(node => { node.alt = node.dataset[`alt${suffix}`]; });
+      document.querySelectorAll('[data-title-ar]').forEach(node => { node.title = node.dataset[`title${suffix}`]; });
+      $('language').setAttribute('aria-label', arabic ? 'Switch to English' : 'التبديل إلى العربية');
+      $('language').querySelectorAll('span').forEach(span => {
+        if (span.lang === next) span.setAttribute('aria-current', 'true');
+        else span.removeAttribute('aria-current');
+      });
+      $('previous').textContent = arabic ? '›' : '‹';
+      $('next').textContent = arabic ? '‹' : '›';
+      if ($('lightbox').open) showProject(activeProject);
+    }
+
+    try { setLanguage(localStorage.getItem('almiemar-language') === 'en' ? 'en' : 'ar'); }
+    catch { setLanguage('ar'); }
+    $('language').addEventListener('click', () => {
+      setLanguage(language === 'ar' ? 'en' : 'ar');
+      try { localStorage.setItem('almiemar-language', language); } catch { /* Private browsing may disable storage. */ }
+    });
+
+    $('hero-motion').addEventListener('click', event => {
+      const paused = $('home').toggleAttribute('data-motion-paused');
+      event.currentTarget.setAttribute('aria-pressed', String(paused));
+    });
+
+    function setMenu(open) {
+      $('header').classList.toggle('open', open);
+      $('menu').setAttribute('aria-expanded', String(open));
+    }
+    $('menu').addEventListener('click', () => setMenu($('menu').getAttribute('aria-expanded') !== 'true'));
+    $('navigation').addEventListener('click', event => {
+      if (event.target.closest('a') && !desktop.matches) setMenu(false);
+    });
+    desktop.addEventListener('change', () => setMenu(false));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && $('header').classList.contains('open')) {
+        setMenu(false);
+        $('menu').focus();
+      }
+    });
+    document.addEventListener('click', event => {
+      if (!$('header').contains(event.target)) setMenu(false);
+    });
+
+    function updateScrollControls() {
+      $('header').classList.toggle('solid', window.scrollY > 24);
+      $('top').hidden = window.scrollY < 450;
+    }
+    window.addEventListener('scroll', updateScrollControls, { passive: true });
+    updateScrollControls();
+    $('top').addEventListener('click', () => {
+      $('header').querySelector('.brand').focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+    });
+
+    const dialog = $('lightbox');
+    $('close-lightbox').addEventListener('click', () => dialog.close());
+    $('previous').addEventListener('click', () => showProject(activeProject - 1));
+    $('next').addEventListener('click', () => showProject(activeProject + 1));
+    dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', () => galleryTrigger?.focus());
+    dialog.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      const forward = event.key === (language === 'ar' ? 'ArrowLeft' : 'ArrowRight');
+      showProject(activeProject + (forward ? 1 : -1));
+    });
+
+    $('contact-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const fieldNames = ['name', 'phone', 'message'];
+      const labels = language === 'ar' ? ['الاسم', 'رقم الهاتف', 'الرسالة'] : ['Name', 'Phone', 'Message'];
+      const fields = fieldNames.map(name => event.currentTarget.elements.namedItem(name));
+      const values = fields.map(field => field.value.trim());
+      const empty = values.indexOf('');
+      if (empty !== -1) {
+        fields[empty].value = '';
+        fields[empty].reportValidity();
+        return;
+      }
+      const message = values.map((value, index) => `${labels[index]}: ${value}`).join('\n');
+      window.location.assign(`https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`);
+    });
+
+    if ('IntersectionObserver' in window && !reducedMotion.matches) {
+      const reveal = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          if (entry.target.classList.contains('pending')) entry.target.classList.add('arrived');
+          entry.target.classList.remove('pending');
+          reveal.unobserve(entry.target);
+        }
+      });
+      document.querySelectorAll('.reveal').forEach(node => {
+        if (node.getBoundingClientRect().top >= innerHeight) node.classList.add('pending');
+        reveal.observe(node);
+      });
+      const counters = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        counters.disconnect();
+        const numbers = entry.target.querySelectorAll('[data-count]');
+        const start = performance.now();
+        function animate(now) {
+          const progress = reducedMotion.matches ? 1 : Math.min((now - start) / 850, 1);
+          for (const number of numbers) number.textContent = Math.round(Number(number.dataset.count) * (1 - (1 - progress) ** 3));
+          if (progress < 1) requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+      }, { threshold: 0.25 });
+      counters.observe($('stats'));
+    }
+  </script>
+</body>
+</html>
